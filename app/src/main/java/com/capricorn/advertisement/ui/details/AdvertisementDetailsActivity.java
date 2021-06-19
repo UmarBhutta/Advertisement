@@ -11,6 +11,19 @@ import com.capricorn.advertisement.R;
 import com.capricorn.advertisement.data.dto.Advertisement;
 import com.capricorn.advertisement.databinding.ActivityAdvertisementDetailsBinding;
 import com.capricorn.advertisement.ui.base.BaseActivity;
+
+import net.danlew.android.joda.DateUtils;
+import net.danlew.android.joda.JodaTimeAndroid;
+
+import org.joda.time.DateTime;
+import org.joda.time.Duration;
+import org.joda.time.chrono.ISOChronology;
+import org.joda.time.format.DateTimeFormat;
+import org.joda.time.format.DateTimeFormatter;
+
+import java.time.LocalDate;
+import java.util.Locale;
+
 import dagger.hilt.android.AndroidEntryPoint;
 
 import static com.capricorn.advertisement.ConstantsKt.ADVERTISEMENT_ITEM_KEY;
@@ -46,7 +59,21 @@ public class AdvertisementDetailsActivity extends BaseActivity {
 
     private void setupView(Advertisement advertisement){
         getSupportActionBar().setTitle(advertisement.getName());
+
+        binding.name.setText(advertisement.getName());
+        binding.price.setText(advertisement.getPrice());
+
         loadImage(advertisement.getImageUrls().get(0));
+
+        setupDate(advertisement.getCreatedAt());
+    }
+
+    private void setupDate(String date){
+        DateTimeFormatter formatter =  DateTimeFormat.forPattern("yyyy-MM-dd HH:mm:ss.SSSSSS")
+                .withLocale(Locale.ROOT)
+                .withChronology(ISOChronology.getInstanceUTC());
+        DateTime dateTime = formatter.parseDateTime(date);
+        binding.dateCreated.setText("Posted: "+DateUtils.getRelativeTimeSpanString(this,dateTime,true));
     }
 
     private void loadImage(String url){
@@ -54,7 +81,7 @@ public class AdvertisementDetailsActivity extends BaseActivity {
         Glide.with(this).load(url)
                 .apply(requestOptions)
                 .diskCacheStrategy(DiskCacheStrategy.AUTOMATIC)
-                .into(binding.pokemonImage);
+                .into(binding.advertisementImage);
     }
 
     @Override
