@@ -6,6 +6,7 @@ import com.capricorn.advertisement.TestDataUtil.initData
 import com.capricorn.advertisement.data.DataRepository
 import com.capricorn.advertisement.data.Result
 import com.capricorn.advertisement.data.dto.AdvertisementList
+import com.capricorn.advertisement.data.dto.Pagination
 import com.capricorn.advertisement.data.error.NETWORK_ERROR
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
@@ -25,7 +26,7 @@ class TestDataRepository @Inject constructor() : DataRepository {
             }
 
             EmptyResponse -> {
-                flow { emit(Result.Success(AdvertisementList(emptyList()))) } }
+                flow { emit(Result.Success(AdvertisementList(emptyList(), Pagination()))) } }
 
 
         }

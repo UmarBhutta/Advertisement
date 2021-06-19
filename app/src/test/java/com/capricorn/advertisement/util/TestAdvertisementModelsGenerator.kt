@@ -34,11 +34,11 @@ class TestAdvertisementModelsGenerator {
     }
 
     fun generateAdvertisementItemModel(): Advertisement {
-        return advertisementList.advertisements[0]
+        return advertisementList.results[0]
     }
 
     fun getStubTitle(): String {
-        return advertisementList.advertisements[0].name
+        return advertisementList.results[0].name!!
     }
 
 

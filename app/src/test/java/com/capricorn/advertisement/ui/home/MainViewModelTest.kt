@@ -65,7 +65,7 @@ class MainViewModelTest {
         mainViewModel.advertisementList.observeForever { }
 
         //3-verify
-        val isEmptyList = mainViewModel.advertisementList.value?.data?.advertisements.isNullOrEmpty()
+        val isEmptyList = mainViewModel.advertisementList.value?.data?.results.isNullOrEmpty()
         assertEquals(pokemonList, mainViewModel.advertisementList.value?.data)
         assertEquals(false,isEmptyList)
     }
@@ -87,7 +87,7 @@ class MainViewModelTest {
         mainViewModel.advertisementList.observeForever { }
 
         //3-verify
-        val isEmptyList = mainViewModel.advertisementList.value?.data?.advertisements.isNullOrEmpty()
+        val isEmptyList = mainViewModel.advertisementList.value?.data?.results.isNullOrEmpty()
         assertEquals(pokemonListModel, mainViewModel.advertisementList.value?.data)
         assertEquals(true, isEmptyList)
     }
