@@ -1,7 +1,6 @@
 package com.capricorn.advertisement.di
 
 import android.content.Context
-import com.capricorn.advertisement.data.local.LocalData
 import com.capricorn.advertisement.utils.DateTimeUtility
 import com.capricorn.advertisement.utils.NetworkConnectivity
 import com.capricorn.advertisement.utils.NetworkUtils
@@ -28,12 +27,6 @@ class ApplicationModule {
     @Singleton
     fun provideCoroutineContext(): CoroutineContext {
         return Dispatchers.IO
-    }
-
-    @Provides
-    @Singleton
-    fun provideLocalData(@ApplicationContext context: Context,moshi: Moshi):LocalData{
-        return LocalData(context,moshi)
     }
 
     @Provides
