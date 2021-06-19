@@ -1,11 +1,8 @@
 package com.capricorn.advertisement.di
 
 import android.content.Context
-import com.capricorn.advertisement.utils.DateTimeUtility
 import com.capricorn.advertisement.utils.NetworkConnectivity
 import com.capricorn.advertisement.utils.NetworkUtils
-import com.capricorn.advertisement.utils.TimeUtils
-import com.squareup.moshi.Moshi
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -33,12 +30,6 @@ class ApplicationModule {
     @Singleton
     fun provideNetworkConnectivity(@ApplicationContext context: Context): NetworkConnectivity {
         return NetworkUtils(context)
-    }
-
-    @Provides
-    @Singleton
-    fun provideDateTimeUtility():DateTimeUtility{
-        return TimeUtils()
     }
 
 }
