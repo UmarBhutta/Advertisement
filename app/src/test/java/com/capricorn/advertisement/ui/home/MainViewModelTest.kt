@@ -51,11 +51,11 @@ class MainViewModelTest {
     @Test
     fun `get Advertisement List`() {
         // Let's do an answer for the liveData
-        val pokemonList = testModelsGenerator.generateAdvertisementList()
+        val advertisementList = testModelsGenerator.generateAdvertisementList()
 
         //1- Mock calls
         coEvery { dataRepository.requestAdvertisementList() } returns flow {
-            emit(Result.Success(pokemonList))
+            emit(Result.Success(advertisementList))
         }
 
         //2-Call
@@ -66,18 +66,18 @@ class MainViewModelTest {
 
         //3-verify
         val isEmptyList = mainViewModel.advertisementList.value?.data?.results.isNullOrEmpty()
-        assertEquals(pokemonList, mainViewModel.advertisementList.value?.data)
+        assertEquals(advertisementList, mainViewModel.advertisementList.value?.data)
         assertEquals(false,isEmptyList)
     }
 
     @Test
     fun `get Advertisement Empty List`() {
         // Let's do an answer for the liveData
-        val pokemonListModel = testModelsGenerator.generateAdvertisementListWithEmptyList()
+        val advertisementList = testModelsGenerator.generateAdvertisementListWithEmptyList()
 
         //1- Mock calls
         coEvery { dataRepository.requestAdvertisementList() } returns flow {
-            emit(Result.Success(pokemonListModel))
+            emit(Result.Success(advertisementList))
         }
 
         //2-Call
@@ -88,12 +88,12 @@ class MainViewModelTest {
 
         //3-verify
         val isEmptyList = mainViewModel.advertisementList.value?.data?.results.isNullOrEmpty()
-        assertEquals(pokemonListModel, mainViewModel.advertisementList.value?.data)
+        assertEquals(advertisementList, mainViewModel.advertisementList.value?.data)
         assertEquals(true, isEmptyList)
     }
 
     @Test
-    fun `get Pokemon List Error`() {
+    fun `get Advertisement List Error`() {
         // Let's do an answer for the liveData
         val error: Result<AdvertisementList> = Result.Error(NETWORK_ERROR)
 

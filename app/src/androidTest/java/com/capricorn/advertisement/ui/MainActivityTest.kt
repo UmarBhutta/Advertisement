@@ -80,7 +80,7 @@ class MainActivityTest {
         mActivityTestRule.launchActivity(null)
         onView(withId(R.id.rv_pokemon_list)).perform(RecyclerViewActions.actionOnItemAtPosition<RecyclerView.ViewHolder>(0,
             click()))
-        onView(withId(R.id.pokemonImage)).check(matches(isDisplayed()))
+        onView(withId(R.id.advertisementImage)).check(matches(isDisplayed()))
     }
 
     @After

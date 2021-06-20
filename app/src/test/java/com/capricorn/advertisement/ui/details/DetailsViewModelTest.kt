@@ -43,7 +43,7 @@ class DetailsViewModelTest {
         detailsViewModel.advertisementData.observeForever{ }
 
         //verify
-        val pokemonData = detailsViewModel.advertisementData.value
-        assertEquals(advertisementItem,pokemonData)
+        val advertisementData = detailsViewModel.advertisementData.value
+        assertEquals(advertisementItem,advertisementData)
     }
 }
